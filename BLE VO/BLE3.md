@@ -14,6 +14,8 @@ Alle Zweipole lassen sich ersetzen durch:
 
 Alle Drei Schaltungen sind Äquivalent.
 
+Und haben den gleichen Widerstandswert.
+
 Und haben die gleiche Kennlinie:
   Wie verhält sich die Spannung bei unterschiedlichen Strömen?
   
