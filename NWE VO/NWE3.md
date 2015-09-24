@@ -114,3 +114,106 @@ cyclic redundancy check, done in hardware with XOR
 - all bits are considered coefficients to a (high degree) polynomial, either 0 or 1 (=either term is there or not)
 - info: (1 + 1 = 10 ==> discard carry  ==> 1 + 1 = 0) <= same => (1 + 1) mod 2 == 0
 - yadda yadda
+
+
+
+# ARQ [automatic repeat request]
+ - is a process that can be defined by protocols, happens in OS
+ - ensures that information is delivered in order and without duplication
+   - error control
+   - flow control
+ - mechanisms:
+   1. sequence numbers
+   2. ACK NAK
+   3. Timers / timeouts
+   4. windows
+
+ 1. "Stop-And-Wait" ['Idle RQ'] - Sender waits for ACK until timeout, then resend
+   - slow
+   - and what if the ACK is lost? receiver gets two copies of frame
+     - solution: add sequence number (alternating 1 bit)
+      - problem: timers sync miss - late ack = wrong ack
+   - better: "forward ack" = 'what is expected next' [that's how it's usually done]
+ 2. "Continuous" ARQ
+   - "Go-Back-N" sender sends N frames -> window shrinks; sender receives ack -> window expands]
+      - usually used because less buffering needed
+      - longer sequence numbers
+      - ACK is called "Receive Ready (RR)"
+        - may also use "Receive not ready (RNR)"
+   - NAK == REJ == Reject == Negative Ack
+   - good window size: 2^k - 1
+   - Full-Duplex: Piggybacking [ack is included in data answer]
+ 3. "Selective-Repeat" "Selective-Reject"
+   - not all following frames are discarded if one is lost, can request just one frame while buffering all previous and next frames
+   - sender and receiver have to buffer
+
+Flow control
+  - dedicated ???????????
+
+
+## Media Access Control
+  "who can use the medium when"
+  - contention based [non-deterministic]
+  - controlled [deterministic]
+
+  1. CSMA/CD [ethernet]
+    - Carrier Sense Multiple Access with Collision Detection
+
+  2. CSMA/CA [wireless]
+    - Carrier Sense Multiple Access with Collision Avoidance
+
+  3. Legacy: Software Token Passing [Token ring, FDDI], deterministic
+  4. Polling
+
+
+## L2 Addressing
+  only local L2 network (!)
+  (L2) local network !== local area network (L3)
+    L3: End to end
+    L2: Within Network Borders
+  Can be a MAC address (Ethernet) or something else (DLCI)
+  Or nothing, on Point to Point (PPP) (address is filled with 11111111)
+
+## HDLC
+  is a L2 protocol family
+  - the most important L2 protocol
+  - many other L2 protocols are based on it
+
+  - sync transmission
+  - bit-oriented [bit stuffing 0111 1110]
+
+  - LLC (Logical Link Control) based on HDLC
+  - LAPB, LAPF, PPP, LLC, SDLC
+
+  - "3 types of stations"
+  - "3 types of transfer modes"
+    - NRM, ABM (Async balanced mode is most important), ARM
+    - set with a "set-mode" command in frame header
+
+  Frame Structire in HDLC
+    - Flag start, 8 bits
+    - Addr, 8 bits
+    - Ctrl, 8 bits
+      - 0: Frame type
+      - 1: Frame type
+      - 2: type
+      - 3: type [00 receive not ready | 01 selective reject]
+      - Poll/Final [used in half-duplex to hand over sending rights; or 'checkpointing': "I need an answer right now"]
+    - data
+    - FCS
+    - Flag (can be the start flag of the next frame)
+
+  Types of HDLC Frames: (!)
+    Information Frames (I) - actual information is sent in there
+    Supervisory Frames (S)
+    Unnumbered Frames (U) - disconnect request...
+
+  window size: upto 7 unacked frames at a time
+  Phases:
+    - Initialize [mode...]
+    - Data transfer
+    - Disconnect
+
+  Cisco HDLC
+    - non-standard
+    - has a "protocol type" field in ctrl: "what comes next"
