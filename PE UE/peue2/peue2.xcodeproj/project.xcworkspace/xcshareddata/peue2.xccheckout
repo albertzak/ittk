@@ -5,16 +5,16 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>00827984-372D-4620-B0B3-BC4E2FF139C4</string>
+	<string>BEC43190-56A9-4BE9-9AE3-49BDBFB30B04</string>
 	<key>IDESourceControlProjectName</key>
-	<string>peue1</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>C46A990EB2C4B3944CBCD965F70F3CBBD2271EC6</key>
 		<string>https://github.com/albertzak/ittk.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>PE UE/peue1/peue1.xcodeproj</string>
+	<string>PE UE/peue2/peue2.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>C46A990EB2C4B3944CBCD965F70F3CBBD2271EC6</key>
