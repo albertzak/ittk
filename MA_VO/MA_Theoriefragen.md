@@ -1,0 +1,32 @@
+  - Wann sagt man, eine Folge konvergiert gegen eine reelle Zahl?
+  - Geben Sie ein Beispiel für eine konvergente Folge an.
+  - Geben Sie ein Beispiel für eine divergente Folge an.
+  - Ist eine konvergente Folge beschränkt?
+  - Ist eine beschränkte Folge konvergent?
+  - Welchen Zahlenwert hat 4 log 64?
+  - Was bedeutet die Ableitung einer Funktion f an einer Stelle a geometrisch?
+  - Wie sieht der Graph der Funktion y = ex ungefähr aus?
+  - Wie sieht der Graph der Funktion y = ln x ungefähr aus?
+  - Berechnen Sie (x2ex)′.
+  - Wie lautet die Quotientenregel?
+  - Wann sind zwei Vektoren zueinander orthogonal?
+  - Welche Regel gilt für e^(a+b) bzw. ln(ab)?
+  - Was versteht man unter einem Häufungspunkt bzw. dem Grenzwert einer Folge, und was ist der Unterschied zwischen beiden Begriffen?
+  - Wie sind sinh x und cosh x definiert und wie lauten ihre Ableitungen?
+  - Wann ist das Quadrieren beider Seiten einer Ungleichung von der Form a < b eine Äquivalenzumformung?
+  - Wie sind die Funktionen sinh x und cosh x definiert?
+  - Wie funktioniert die Regel von de l’Hospitel und wann ist sie anwendbar?
+  - Wann nennt man ein Integral uneigentlich und wie erfolgt die Berechnung eines solchen?
+  - Unter welchen Bedingungen besitzt eine Funktion f(x,y) an der Stelle (a, b) (im Inneren des Definitionsbereiches) ein relatives Minimum?
+  - Wie können aus den Polarkoordinaten r,φ einer komplexen Zahl Real- bzw. Imagina ̈rteil berechnet werden?
+  - Unter welcher Voraussetzung u ̈ber a ist b < c a ̈quivalent zu ab > ac?
+  - Wann sagt man, eine unendliche Folge konvergiert gegen die reelle Zahl a?
+  - Wie lautet die Produktregel?
+  - Wie lautet die Quotientenregel?
+  - Wie lautet die Kettenregel?
+  - Wann sagt man, die Summe der unendlichen Reihe a1 + a2 + a3 + . . . ist a?
+  - Wie lautet die Taylorreihe einer beliebig oft differenzierbaren Funktion f(x) mit dem Entwicklungspunkt a und dem Auswertepunkt x?
+  - Wann sagt man, die reelle Zahl a ist der Grenzwert der reellen Zahlenfolge
+a1,a2,a3,...?
+  - Wie lautet die Formel der partiellen Integration für unbestimmte Integrale?
+  - Berechnen Sie (sin(𝑥𝑦))𝑥𝑦.
