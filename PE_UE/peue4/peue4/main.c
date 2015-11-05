@@ -1,24 +1,56 @@
 #include <stdio.h>
+#include <math.h>
 
 float f(float x) {
-    return x*x*x + 3 * x - 4;
+    return x*x-4;
+}
+
+int fsgn(float x) {
+    if (x > 0.0) {
+        return 1;
+    } else if (x < 0.0) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+void bisect(float x0, float x1, float epsilon, int counter) {
+    counter++;
+
+    if (fabsf(x1-x0) < epsilon) {
+        printf("Found a root at %.4f (took %d iterations)\n", x0, counter);
+    } else {
+        float xneu = (x0 + x1) / 2.0;
+
+        if (fsgn(f(x0)) != fsgn(f(xneu))) {
+            bisect(x0, xneu, epsilon, counter);
+        } else if (fsgn(f(xneu)) != fsgn(f(x1))) {
+            bisect(xneu, x1, epsilon, counter);
+        } else if (f(xneu) == 0.0) {
+            printf("Found a root at %.4f", xneu);
+        } else {
+            printf("Couldn't find a root.\n");
+        }
+    }
+
 }
 
 int main() {
-    float x0, x1, epsilon, xneu;
-    int i = 0;
+    float x0, x1, epsilon;
     
-    printf("Calculate a root of a function by bisection.\n");
+    printf("Approximate a root of a function by bisection.\n");
     printf("(Root will be within +/- epsilon value)\n\n");
     
     printf("   Enter start x-value of search interval: ");
     scanf("%f", &x0);
     printf("   Enter end x-value of search interval: ");
     scanf("%f", &x1);
-    printf("   Enter epsilon value [Ex.: 0.01]: ");
+    printf("   Enter epsilon value [Ex.: 0.001]: ");
     scanf("%f", &epsilon);
     printf("\n");
     
+    // Swap upper and lower bounds if entered incorrectly
     if (x0 > x1) {
         float z;
         z = x1;
@@ -26,26 +58,7 @@ int main() {
         x0 = z;
     }
     
-    if (f(x0)*f(x1) > 0) {
-        printf("There is no root bewteen x=[%.4f; %.4f].", x0, x1);
-        return 0;
-    }
-    
-    xneu = x1;
-    while (f(xneu-x0) > epsilon || f(x0-xneu) < -epsilon) {
-        xneu = (x0 + xneu) / 2;
-        if (f(x0) * f(xneu) < 0) {
-            printf("[%d] Root is left to [%.4f, %.4f]\n", i, x0, xneu);
-        } else if (f(xneu) * f(x1) < 0) {
-            printf("[%d] Root is right to [%.4f, %.4f]\n", i, xneu, x1);
-        }
-        i++;
-    }
-    
-    printf("Found a root: (in %d steps)\n", i);
-    printf("    f(%.4f) = %.4f\n", xneu, f(xneu));
-    
-
+    bisect(x0, x1, epsilon, 0);
     
     return 0;
 }

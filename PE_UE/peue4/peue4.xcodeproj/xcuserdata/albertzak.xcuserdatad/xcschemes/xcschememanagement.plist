@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>newton.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>peue4.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1C60E8B01BEBD5F1002D6DB3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1CC844891BD8E40E00B23DFD</key>
 		<dict>
 			<key>primary</key>
