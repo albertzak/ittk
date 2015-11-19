@@ -53,4 +53,20 @@ Legacy WAN Technologies
   - Line of Demarcation "Line where the ownership changes"
   - UNI: User-Network Interface
   - NNI: Network-Network Interface
-  - 
+  - PPP (Point-to-Point)
+    - L2: LCP Link Control Protocol
+    - Network Control Protocol
+    - 64 Kbit/s each channel
+    - basic Rate: 2 Bearer, 1 Signaling Channel
+    - EUPrimary Rate: 30 Bearer Channels, 1 Delta Signaling channel, 1 Sync channel (32 total)
+    - US/Japan: 23 Bearer, 1 Delta
+
+  - X.25
+    - slow erlianle
+    - packet Switching
+    - virtual circuits
+  - frame relay
+    - pay for bandwidth, get a little more than you pay for
+  - ATM
+    - small cells, reduces latency jitter
+  - SDH/SONET, PDH
