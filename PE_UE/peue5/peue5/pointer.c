@@ -18,14 +18,9 @@ void swap(float *a, float *b) {
 
 
 void memswap(char *mem1, char *mem2, int size) {
-    // Intermediate variable z holds each byte
     int i;
-    char z;
-
-    // Loop through all bytes of the memory area
-    // and swap each byte via the intermediary variable
     for(i = 0; i < size; i++) {
-        z = mem1[i];
+        char z = mem1[i];
         mem1[i] = mem2[i];
         mem2[i] = z;
     }
@@ -33,62 +28,56 @@ void memswap(char *mem1, char *mem2, int size) {
 
 
 int firstPosOfChar(char *text, char c) {
-    int i;
-    char currentChar;
-
-    i = 0;
-
-    do {
-        currentChar = text[i];
-        if (currentChar == c)
+    int i = 0;
+    while (text[i]) {
+        if (text[i] == c)
             return i;
-        i++;
-    } while(currentChar);
-    // Look at each char as long as it's not the null byte
-    // else return -1 ('not found')
-
+        else
+            i++;
+    }
     return -1;
 }
 
 
 void capitalize(char *text) {
-    int i;
+    int i = 0;
+    while (text[i]) {
+        if (text[i] >= 97 && text[i] <= 122)
+            if (i == 0 || text[i-1] <= 32)
+                text[i] = text[i] - 32;
+        i++;
+    }
+}
 
-    // The current char we're looking at
-    char c;
+int length(char *text) {
+    char * current = text;
 
-    // A flag that is set to true when we're at a space
-    // or any other word boundary. If the following char is a lowercase
-    // letter, the char should be capitalized.
-    // We should unset this flag after each iteration,
-    // except if the next char is another space.
-    // Inititialize with 1 because we definitely
-    // want to  capitalize the first character.
-    char capitalizeNext = 1;
+    while (*current)
+        current++;
 
-    do {
-        c = text[i];
+    return (int)(current - text);
+}
 
-        // set the capitalizeNext flag if we're at a word boundary now
-        if (c == ' ' || c == '\t' || c == '\n' || c == '\r') {
-            capitalizeNext = 1;
+char *stringString(char *haystack, char *needle) {
+    char *current;
+    int foundChars = 0;
 
-        // capitalize only lower case letters that are at the beginning
-        // of a word (eg. after a space / capitalizeNext is set)
-        } else if (capitalizeNext && c >= 97 && c <= 122) {
+    current = haystack;
 
-            // To capitalize a lower case ascii letter,
-            // subtract 32 from the char code
-            c = c - 32;
-            text[i] = c;
+    while (*current) {
 
-            capitalizeNext = 0;
+        if (*current == needle[foundChars]) {
+            foundChars++;
         } else {
-            capitalizeNext = 0;
+            foundChars = 0;
         }
 
-        i++;
-    } while(c);
+        if (foundChars == strlen(needle))
+            return current - strlen(needle) + 1;
+
+        current++;
+    }
+    return haystack;
 }
 
 
@@ -132,10 +121,21 @@ int main () {
 
 
     printf("\n======================================\n");
-    strcpy(text, "Dies ist ein Beispieltext, wo jedes Wort mit einem Großbuchstaben beginnen soll.");
+    strcpy(text, "dies      ist ein Be ispieltext, \nwo jedes Wort mit einem Großbuchstaben beginnen soll.");
     printf("before capitalize: %s\n", text);
     capitalize(text);
     printf("after capitalize: %s\n", text);
-    
+
+
+    printf("\n======================================\n");
+    strcpy(text, "Dies ist ein 44 zeichen langer Beispieltext.");
+    printf("text to examine: %s\n", text);
+    printf("length of string (should be 44): %d\n", length(text));
+
+      
+    printf("\n======================================\n");
+    strcpy(text, "Dies ist ein Test");
+    printf("substring 'is' located at: %p, with a value of: %c\n", stringString(text, "Test"), *stringString(text, "Test"));
+
     return 0;
 }
